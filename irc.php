@@ -6,6 +6,4 @@
 <body>
 <p>IRC in a HTML document</p>
 <iframe src="https://webchat.oftc.net/?uio=OT10cnVlJjExPTI1Ng31" width="647" height="400"></iframe>
-<iframe src="kiwiirc.com/nextclient" width="647" height="400"></iframe>
-</body>
 </html>
