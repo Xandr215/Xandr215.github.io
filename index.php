@@ -7,7 +7,10 @@
     <h1>Hello, world!</h1>
     <h2>This is Xandr215's GitHub Pages site.</h2>
     <p>Feel free to visit the other pages here.</p>
-    <a href="internet-relay-chat.html">Go to the embedded IRC pages</a>
-    <a href="insecurly.html">Go to the Insecurly exploit page</a>
+    <a href="irc.php">Go to the embedded IRC pages</a>
+    <a href="insecurly.php">Go to the Insecurly exploit page</a>
   </body>
+  <foooter>
+    Resources and interesting pages:<br><a href="kiwiirc.com/nextclient">Kiwi IRC</a>
+  </foooter>
 </html>
