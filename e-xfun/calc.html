@@ -1,0 +1,106 @@
+<html>
+<style>
+body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background: #f2f2f2;
+   color: #333;
+}
+
+.calculator {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 80%;
+   height: 80%;
+   padding: 20px;
+   box-sizing: border-box;
+}
+
+.calculator h1 {
+   font-size: 2em;
+   margin-bottom: 20px;
+}
+
+.calculator button {
+   font-size: 1.2em;
+   padding: 10px 20px;
+   border: 1px solid #333;
+   border-radius: 10px;
+   margin: 10px;
+   cursor: pointer;
+}
+
+.calculator button:hover {
+   background: #333;
+   color: #f2f2f2;
+}
+
+.calculator input {
+   font-size: 1.2em;
+   padding: 10px;
+   border: 1px solid #333;
+   border-radius: 10px;
+   margin: 10px;
+}
+
+.calculator input[type="submit"] {
+   background: #333;
+   color: #f2f2f2;
+}
+
+.calculator input[type="submit"]:hover {
+   background: #f2f2f2;
+   color: #333;
+}
+</style>
+<body>
+   <div class="calculator">
+       <h1>Simple Calculator</h1>
+       <form>
+           <label for="input1">Equation</label>
+           <input type="text" id="input1" name="input1">
+           <button>Clear</button>
+           <label for="input2">Answer</label>
+           <input type="text" id="input2" name="input2">
+           <button>+</button>
+           <label for="input3">(%)</label>
+           <input type="text" id="input3" name="input3">
+           <button>-</button>
+           <label for="input4">9</label>
+           <input type="text" id="input4" name="input4">
+           <button>×</button>
+           <label for="input5">6</label>
+           <input type="text" id="input5" name="input5">
+           <button>+</button>
+           <label for="input6">3</label>
+           <input type="text" id="input6" name="input6">
+           <button>-</button>
+           <label for="input7">2</label>
+           <input type="text" id="input7" name="input7">
+           <button>=</button>
+           <label for="input8">Con.</label>
+           <input type="text" id="input8" name="input8">
+           <button>Click Fn.</button>
+           <label for="input9">Enter a fraction</label>
+           <input type="text" id="input9" name="input9">
+           <button>Click Fn.</button>
+           <label for="input10">Enter a decimal</label>
+           <input type="text" id="input10" name="input10">
+           <button>Click Fn.</button>
+           <label for="input11">Fraction to decimal</label>
+           <input type="text" id="input11" name="input11">
+           <button>=</button>
+           <label for="input12">Clear</label>
+           <input type="text" id="input12" name="input12">
+           <button>Clear</button>
+       </form>
+   </div>
+</body>
+</html>
