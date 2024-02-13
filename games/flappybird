@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two-Player Flappy Bird</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const bird1 = {
+      x: 100,
+      y: canvas.height / 2,
+      radius: 20,
+      color: 'red',
+      velocity: 0,
+      gravity: 0.5,
+      jump: -8
+    };
+
+    const bird2 = {
+      x: 200,
+      y: canvas.height / 2,
+      radius: 20,
+      color: 'blue',
+      velocity: 0,
+      gravity: 0.5,
+      jump: -8
+    };
+
+    function drawBird(bird) {
+      ctx.beginPath();
+      ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
+      ctx.fillStyle = bird.color;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function updateBird(bird, upKey) {
+      if (upKey === 'KeyW' && bird.y > bird.radius) {
+        bird.velocity += bird.jump;
+      }
+      bird.velocity += bird.gravity;
+      bird.y += bird.velocity;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBird(bird1);
+      drawBird(bird2);
+    }
+
+    function update() {
+      updateBird(bird1, 'KeyW');
+      updateBird(bird2, 'ArrowUp');
+    }
+
+    function loop() {
+      draw();
+      update();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  </script>
+</body>
+</html>
