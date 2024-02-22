@@ -1,0 +1,42 @@
+CACHE MANIFEST
+# v1.0 : 10-08-2014
+
+CACHE:
+# pages
+index.html
+
+# styles & scripts
+css/theme.css
+js/jquery.min.js
+js/default.js
+
+# icons
+resources/icons/favicon.png
+resources/icons/favicon.svg
+resources/icons/ms-icon-144x144.png
+resources/icons/ms-icon-150x150.png
+resources/icons/ms-icon-310x310.png
+resources/icons/ms-icon-70x70.png
+resources/icons/apple-icon-60x60.png
+resources/icons/apple-icon-57x57.png
+resources/icons/apple-icon-76x76.png
+resources/icons/apple-icon-72x72.png
+resources/icons/apple-icon-180x180.png
+resources/icons/apple-icon-120x120.png
+resources/icons/apple-icon-114x114.png
+resources/icons/apple-icon-144x144.png
+resources/icons/apple-icon-152x152.png
+resources/icons/apple-icon-precomposed.png
+resources/icons/apple-icon.png
+resources/icons/android-icon-72x72.png
+resources/icons/android-icon-36x36.png
+resources/icons/android-icon-48x48.png
+resources/icons/android-icon-96x96.png
+resources/icons/android-icon-144x144.png
+resources/icons/android-icon-192x192.png
+
+NETWORK:
+login.php
+
+FALLBACK:
+/ /offline.html
