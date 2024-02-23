@@ -35,8 +35,6 @@ resources/icons/android-icon-96x96.png
 resources/icons/android-icon-144x144.png
 resources/icons/android-icon-192x192.png
 
-NETWORK:
-login.php
-
-FALLBACK:
-/ /offline.html
+# other
+manifest.json
+browserconfig.xml
