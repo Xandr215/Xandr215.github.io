@@ -10,6 +10,9 @@ resources/css/interface.css
 resources/js/assert.js
 resources/js/base-error-reporting.js
 resources/js/cr.js
+resources/js/lib_common.chunk.js
+resources/js/lib_react.chunk.js
+
 
 # icons
 resources/icons/favicon.png
