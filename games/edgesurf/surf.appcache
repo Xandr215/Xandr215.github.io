@@ -6,9 +6,10 @@ CACHE:
 index.html
 
 # styles & scripts
-css/theme.css
-js/jquery.min.js
-js/default.js
+resources/css/interface.css
+resources/js/assert.js
+resources/js/base-error-reporting.js
+resources/js/cr.js
 
 # icons
 resources/icons/favicon.png
