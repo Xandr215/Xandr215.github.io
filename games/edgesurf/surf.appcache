@@ -12,7 +12,13 @@ resources/js/base-error-reporting.js
 resources/js/cr.js
 resources/js/lib_common.chunk.js
 resources/js/lib_react.chunk.js
-
+resources/js/load_time_data.js
+resources/js/parse_html_subset.js
+resources/js/promise_resolver.js
+resources/js/strings.js
+resources/js/surf-error-reporting.js
+resources/js/surf.bundle.js
+resources/js/util.js
 
 # icons
 resources/icons/favicon.png
@@ -38,6 +44,16 @@ resources/icons/android-icon-48x48.png
 resources/icons/android-icon-96x96.png
 resources/icons/android-icon-144x144.png
 resources/icons/android-icon-192x192.png
+
+# textures
+# surf
+resources/surf/bg.png
+resources/surf/objects.png
+resources/surf/player.png
+# ski
+resources/ski/bg.png
+resources/ski/objects.png
+resources/ski/player.png
 
 # other
 manifest.json
