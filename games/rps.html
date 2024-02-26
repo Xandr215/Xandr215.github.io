@@ -48,6 +48,11 @@
       font-size: 20px;
       color: #333;
     }
+
+    #high-score {
+      font-size: 20px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -59,6 +64,7 @@
   <button id="scissors">✌️</button>
   <p id="result">Let's play!</p>
   <p id="score">You: 0 | Computer: 0</p>
+  <p id="high-score">High Score: 0</p>
   <script>
     // Get the elements from the document
     var rock = document.getElementById("rock");
@@ -66,10 +72,19 @@
     var scissors = document.getElementById("scissors");
     var result = document.getElementById("result");
     var score = document.getElementById("score");
+    var highScore = document.getElementById("high-score");
 
     // Initialize the score variables
     var userScore = 0;
     var computerScore = 0;
+    var userHighScore = 0;
+
+    // Get the high score from the localStorage, if it exists
+    if (localStorage.getItem("userHighScore")) {
+      userHighScore = localStorage.getItem("userHighScore");
+      // Update the high score display
+      highScore.innerHTML = "High Score: " + userHighScore;
+    }
 
     // Define the options array
     var options = ["rock", "paper", "scissors"];
@@ -106,6 +121,16 @@
         result.innerHTML = "You win!";
         // Increment the user score
         userScore++;
+        // Check if the user score is higher than the high score
+        if (userScore > userHighScore) {
+          // Update the high score
+          userHighScore = userScore;
+          // Store the high score in the localStorage
+          localStorage
+                    localStorage.setItem("userHighScore", userHighScore);
+          // Update the high score display
+          highScore.innerHTML = "High Score: " + userHighScore;
+        }
       } else {
         // Computer wins
         result.innerHTML = "You lose!";
