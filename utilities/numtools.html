@@ -1,0 +1,131 @@
+<html>
+<head>
+  <title>Random Number Generator and Prime Number Checker</title>
+  <script>
+    // Define a function to generate a random number
+    function random_number_generator() {
+      // Get the range from the input fields
+      var lower = parseInt(document.getElementById("lower").value) || 0; // Default lower bound is 0
+      var upper = parseInt(document.getElementById("upper").value) || 100; // Default upper bound is 100
+      
+      // Get the decimal option from the checkbox
+      var decimal = document.getElementById("decimal").checked || false; // Default decimal option is false
+      
+      // Get the parity option from the radio buttons
+      var parity = document.querySelector('input[name="parity"]:checked').value || "both"; // Default parity option is "both"
+      
+      // Get the numbers option from the textarea
+      var numbers = document.getElementById("numbers").value.split(",") || []; // Default numbers option is an empty array
+      
+      // If the numbers option is not empty, choose a random number from the array
+      if (numbers.length > 0 && numbers[0] != "") {
+        var number = numbers[Math.floor(Math.random() * numbers.length)];
+      }
+      // Otherwise, generate a random number within the range
+      else {
+        // If the decimal option is true, generate a random float
+        if (decimal) {
+          var number = Math.random() * (upper - lower) + lower;
+        }
+        // Otherwise, generate a random integer
+        else {
+          var number = Math.floor(Math.random() * (upper - lower + 1)) + lower;
+        }
+        
+        // If the parity option is "even", make sure the number is even
+        if (parity == "even") {
+          number = number - number % 2;
+        }
+        // If the parity option is "odd", make sure the number is odd
+        else if (parity == "odd") {
+          number = number + (number % 2 == 0 ? 1 : 0);
+        }
+      }
+      
+      // Display the random number in the output field
+      document.getElementById("output").value = number;
+    }
+    
+    // Define a function to check if a number is prime or not
+    function is_prime(num) {
+      // Check if number is equal to 1
+      if (num === 1) {
+        return false;
+      }
+      // Check if number is greater than 1
+      else if (num > 1) {
+        // Looping through 2 to square root of number
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          // Check if number is divisible by any number other than 1 and itself
+          if (num % i == 0) {
+            return false;
+          }
+        }
+        // If number is not divisible by any number, it is prime
+        return true;
+      }
+      // Check if number is less than 1
+      else {
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Random Number Generator and Prime Number Checker</h1>
+  <p>Enter the range for the random number:</p>
+  <input type="number" id="lower" placeholder="Lower bound">
+  <input type="number" id="upper" placeholder="Upper bound">
+  <p>Choose the decimal option:</p>
+  <input type="checkbox" id="decimal">
+  <label for="decimal">Allow decimal numbers</label>
+  <p>Choose the parity option:</p>
+  <input type="radio" id="both" name="parity" value="both" checked>
+  <label for="both">Both even and odd numbers</label>
+  <input type="radio" id="even" name="parity" value="even">
+  <label for="even">Only even numbers</label>
+  <input type="radio" id="odd" name="parity" value="odd">
+  <label for="odd">Only odd numbers</label>
+  <p>Enter the numbers to choose from (optional, separated by commas):</p>
+  <textarea id="numbers" rows="4" cols="50"></textarea>
+  <p>Click the button to generate a random number:</p>
+  <button onclick="random_number_generator()">Generate</button>
+  <p>The random number is:</p>
+  <input type="text" id="output" readonly>
+  <p>Enter a number and click the button to check if it is a prime number or not:</p>
+  <input type="number" id="input" placeholder="Enter a number">
+  <button type="button" id="button">Check</button>
+  <p id="result"></p>
+  <script>
+    // Get the button element from the webpage
+    let button = document.getElementById("button");
+
+    // Get the result element from the webpage
+    let result = document.getElementById("result");
+
+    // Add a click event listener to the button
+    button.addEventListener("click", function() {
+      // Get the value of the input
+      let number = parseInt(document.getElementById("input").value);
+
+      // Check if the input is a valid number
+      if (isNaN(number)) {
+        // Display an error message
+        result.textContent = "Please enter a valid number.";
+      }
+      else {
+        // Call the is_prime function and store the result
+        let prime = is_prime(number);
+
+        // Display the result
+        if (prime) {
+          result.textContent = number + " is a prime number.";
+        }
+        else {
+          result.textContent = number + " is not a prime number.";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
