@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGenie</title>
+    <style>
+        body {
+            background-color: #7E6FD6;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #header {
+            text-align: center;
+            padding: 20px;
+            background-color: #7E6FD6;
+        }
+        canvas {
+            display: none; /* Hide the canvas by default */
+            margin: 20px auto;
+            background-color: #7E6FD6;
+        }
+        #chat-log {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #7E6FD6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input[type="text"],
+        button {
+            width: calc(100% - 20px);
+            max-width: 300px;
+            height: 45px;
+            margin: 0 10px;
+            box-sizing: border-box;
+            display: block;
+            margin: 10px auto;
+        }
+        .paddle {
+            width: 20px;
+            height: 100px; /* Changed height of the paddles */
+            background-color: white;
+            z-index: 1;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>ChatGenie Experimental</h1>
+        <h2>May not always work!!!</h2>
+    </div>
+    <div id="chat-log"></div>
+    <input type="text" id="user-input" placeholder="Type your message here">
+    <button id="clear-button">Reset Chat</button>
+    <button id="credits-button">Credits</button>
+    <canvas id="pingPongCanvas" width="800" height="400" style="border: 1px solid black;"></canvas> 
+    <script>
+        const chatLog = document.getElementById('chat-log');
+        const userInput = document.getElementById('user-input');
+        const clearButton = document.getElementById('clear-button');
+        const creditsButton = document.getElementById('credits-button');
+        const canvas = document.getElementById("pingPongCanvas");
+        const context = canvas.getContext("2d");
+        const paddleWidth = 20;
+        const paddleHeight = 100;
+        const ballSize = 10;
+        let leftScore = 0;
+        let rightScore = 0;
+        let paddle1Y = (canvas.height - paddleHeight) / 2;
+        let paddle2Y = (canvas.height - paddleHeight) / 2;
+        let paddleSpeed = 5;
+        let ballX = canvas.width / 2;
+        let ballY = canvas.height / 2;
+        let ballSpeedX = 5;
+        let ballSpeedY = 5;
+        let keys = {};
+        let canvasClicked = false; // Track whether the canvas is clicked
+
+        creditsButton.addEventListener('click', function() {
+            sendMessage("credits");
+        });
+      
+        userInput.addEventListener('keyup', function(event) {
+            if (event.keyCode === 13) {
+                const userInputValue = userInput.value.toLowerCase();
+                sendMessage(userInputValue);
+                if (userInputValue === "pingpong") {
+                    canvas.style.display = "block";
+                }
+                userInput.value = ''; // Clear the input after sending the message
+            }
+        });
+        clearButton.addEventListener('click', clearChat);
+        function displayMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            chatLog.appendChild(messageElement);
+        }
+
+        function sendMessage(userMessage) {
+            displayMessage('You: ' + userMessage);
+
+            const sanitizedMessage = userMessage.toLowerCase();
+
+            if (sanitizedMessage.includes('whopper') || sanitizedMessage.includes('bk') || sanitizedMessage.includes('whopper song') || sanitizedMessage.includes('bk song')) {
+                displayMessage("ChatGenie: Whopper Whopper Whopper Whopper Junior, Double, Triple Whopper. Flame grilled taste with perfect toppers I rule this day. Lettuce, mayo, pickle, ketchup, it\'s okay if I don\'t want that. Impossible or Bacon Whopper any Whopper my way You rule you\'re seizin the day at BK have it your way. You rule!"); }
+            else if (sanitizedMessage.includes('hello') || sanitizedMessage.includes('hi') || sanitizedMessage.includes('hey')) {
+                displayMessage('ChatGenie: Hello, I\'m ChatGenie!');
+            } else if (sanitizedMessage.includes('credits')) {
+                displayMessage("Lead Dev and Owner: Zak Spocter. Devs: Anders Thoreson, Xander Buckner, Eden Romp.");
+            } else if (sanitizedMessage.includes('type your message here')) {
+                displayMessage('ChatGenie: Using placeholder text, are we?');
+            } else if (sanitizedMessage.includes('you are')) {
+                const words = sanitizedMessage.split(' ');
+                const index = words.indexOf('are');
+                if (index !== -1 && index < words.length - 1) {
+                    const adjective = words.slice(index + 1).join(' ');
+                    displayMessage(`ChatGenie: Thank you for the compliment, you are ${adjective} too! 😄`);
+                } else {
+                    displayMessage('ChatGenie: Thank you 😄');
+                }
+            } else if (sanitizedMessage.startsWith('what is') || sanitizedMessage.startsWith('whats')) {
+                const expression = sanitizedMessage.replace(/[^0-9+\-*\/x^()]/g, ''); // Remove non-numeric, variable, and operator characters
+                const result = evaluateAlgebraicExpression(expression);
+                if (result !== null) {
+                    displayMessage('ChatGenie: The result is ' + result);
+                } else {
+                    displayMessage("ChatGenie: I don't know that yet, I'm dumb.");
+                }
+            } else {
+                displayMessage("ChatGenie: I don't know that yet, I'm dumb.");
+            }
+        }
+
+        function clearChat() {
+            chatLog.innerHTML = '';
+            displayMessage("ChatGenie: Okay, let's start over");
+        }
+
+        function evaluateAlgebraicExpression(expression) {
+            try {
+                return eval(expression);
+            } catch (error) {
+                return null; // Return null if expression is invalid or cannot be evaluated
+            }
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (!canvasClicked) { // Conditionally handle key events based on whether the canvas is clicked
+                keys[event.key] = true;
+            }
+        });
+
+        document.addEventListener("keyup", function (event) {
+            if (!canvasClicked) { // Conditionally handle key events based on whether the canvas is clicked
+                keys[event.key] = false;
+            }
+        });
+
+        canvas.addEventListener("click", function() {
+            canvasClicked = true; // Update the variable when the canvas is clicked
+        });
+
+        function draw() {
+            // Clear canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw paddles
+            context.fillStyle = "#000";
+            context.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
+            context.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
+
+            // Draw ball
+            context.beginPath();
+            context.arc(ballX, ballY, ballSize, 0, Math.PI * 2);
+            context.fillStyle = "#000";
+            context.fill();
+            context.closePath();
+
+            // Move paddles
+            movePaddle();
+
+            // Move ball
+            ballX += ballSpeedX;
+            ballY += ballSpeedY;
+
+            // Ball collisions with walls
+            if (ballY + ballSize > canvas.height || ballY - ballSize < 0) {
+                ballSpeedY = -ballSpeedY;
+            }
+
+            // Ball collisions with paddles
+            if (
+                (ballX - ballSize < paddleWidth && ballY > paddle1Y && ballY < paddle1Y + paddleHeight) ||
+                (ballX + ballSize > canvas.width - paddleWidth && ballY > paddle2Y && ballY < paddle2Y + paddleHeight)
+            ) {
+                ballSpeedX = -ballSpeedX;
+            }
+
+            // Game over if the ball goes beyond paddles
+            if (ballX - ballSize < 0 || ballX + ballSize > canvas.width) {
+                if (ballX - ballSize < 0) {
+                    rightScore++;
+                } else {
+                    leftScore++;
+                }
+
+                setTimeout(resetGame, 200);
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        function movePaddle() {
+            // Move paddle1 based on "W" and "S" keys
+            if (keys["w"] && paddle1Y > 0) {
+                paddle1Y -= paddleSpeed;
+            }
+
+            if (keys["s"] && paddle1Y < canvas.height - paddleHeight) {
+                paddle1Y += paddleSpeed;
+            }
+
+            // Move paddle2 based on arrow keys
+            if (keys["ArrowUp"] && paddle2Y > 0) {
+                paddle2Y -= paddleSpeed;
+            }
+
+            if (keys["ArrowDown"] && paddle2Y < canvas.height - paddleHeight) {
+                paddle2Y += paddleSpeed;
+            }
+        }
+
+        function resetGame() {
+            // Reset ball and paddles
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+            paddle1Y = (canvas.height - paddleHeight) / 2;
+            paddle2Y = (canvas.height - paddleHeight) / 2;
+            ballSpeedX = -ballSpeedX; // Start the ball in the opposite direction
+            ballSpeedY = -ballSpeedY;
+        }
+
+        draw();
+    </script>
+</body>
+</html>
