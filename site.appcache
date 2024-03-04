@@ -67,6 +67,7 @@ CACHE:
 # utilities
 /utilities/index.html
 /utilities/numtools.html
+/utilities/partialcalc.html
 
 # other
 /games/edgesurf/manifest.json
