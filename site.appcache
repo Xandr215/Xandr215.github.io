@@ -1,0 +1,73 @@
+CACHE MANIFEST
+# v1.0 : 10-08-2014
+
+CACHE:
+# main
+index.html
+irc.html
+contact.html
+# games
+games/index.html
+games/guessnum.html
+games/rps.html
+# edgesurf
+# styles and scripts
+games/edgesurf/resources/css/interface.css
+games/edgesurf/resources/js/assert.js
+games/edgesurf/resources/js/base-error-reporting.js
+games/edgesurf/resources/js/cr.js
+games/edgesurf/resources/js/lib_common.chunk.js
+games/edgesurf/resources/js/lib_react.chunk.js
+games/edgesurf/resources/js/load_time_data.js
+games/edgesurf/resources/js/parse_html_subset.js
+games/edgesurf/resources/js/promise_resolver.js
+games/edgesurf/resources/js/strings.js
+games/edgesurf/resources/js/surf-error-reporting.js
+games/edgesurf/resources/js/surf.bundle.js
+games/edgesurf/resources/js/util.js
+
+# icons
+games/edgesurf/resources/icons/favicon.png
+games/edgesurf/resources/icons/favicon.svg
+games/edgesurf/resources/icons/ms-icon-144x144.png
+games/edgesurf/resources/icons/ms-icon-150x150.png
+games/edgesurf/resources/icons/ms-icon-310x310.png
+games/edgesurf/resources/icons/ms-icon-70x70.png
+games/edgesurf/resources/icons/apple-icon-60x60.png
+games/edgesurf/resources/icons/apple-icon-57x57.png
+games/edgesurf/resources/icons/apple-icon-76x76.png
+games/edgesurf/resources/icons/apple-icon-72x72.png
+games/edgesurf/resources/icons/apple-icon-180x180.png
+games/edgesurf/resources/icons/apple-icon-120x120.png
+games/edgesurf/resources/icons/apple-icon-114x114.png
+games/edgesurf/resources/icons/apple-icon-144x144.png
+games/edgesurf/resources/icons/apple-icon-152x152.png
+games/edgesurf/resources/icons/apple-icon-precomposed.png
+games/edgesurf/resources/icons/apple-icon.png
+games/edgesurf/resources/icons/android-icon-72x72.png
+games/edgesurf/resources/icons/android-icon-36x36.png
+games/edgesurf/resources/icons/android-icon-48x48.png
+games/edgesurf/resources/icons/android-icon-96x96.png
+games/edgesurf/resources/icons/android-icon-144x144.png
+games/edgesurf/resources/icons/android-icon-192x192.png
+
+# textures
+# surf
+games/edgesurf/resources/surf/bg.png
+games/edgesurf/resources/surf/objects.png
+games/edgesurf/resources/surf/player.png
+# ski
+games/edgesurf/resources/ski/bg.png
+games/edgesurf/resources/ski/objects.png
+games/edgesurf/resources/ski/player.png
+
+# images
+images/favicon.ico
+
+# utilities
+utilities/index.html
+utilities/numtools.html
+
+# other
+manifest.json
+browserconfig.xml
