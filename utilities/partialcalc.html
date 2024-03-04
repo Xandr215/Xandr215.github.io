@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PartialCalc</title>
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        function addToDisplay(value) {
+            const inputBox = document.getElementById("result");
+            inputBox.value += value;
+        }
+
+        function clearDisplay() {
+            const inputBox = document.getElementById("result");
+            inputBox.value = "";
+        }
+
+        function calculate() {
+            const inputBox = document.getElementById("result");
+            const expression = inputBox.value;
+
+            try {
+                const result = eval(expression);
+                inputBox.value = result;
+            } catch (error) {
+                inputBox.value = "Error";
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="calcu">
+        <tr>
+            <td colspan="3">
+                <input type="text" id="result">
+            </td>
+            <td><input type="button" value="c" onclick="clearDisplay()"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="addToDisplay('1')"></td>
+            <td><input type="button" value="2" onclick="addToDisplay('2')"></td>
+            <td><input type="button" value="3" onclick="addToDisplay('3')"></td>
+            <td><input type="button" value="/" onclick="addToDisplay('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="addToDisplay('4')"></td>
+            <td><input type="button" value="5" onclick="addToDisplay('5')"></td>
+            <td><input type="button" value="6" onclick="addToDisplay('6')"></td>
+            <td><input type="button" value="*" onclick="addToDisplay('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="addToDisplay('7')"></td>
+            <td><input type="button" value="8" onclick="addToDisplay('8')"></td>
+            <td><input type="button" value="9" onclick="addToDisplay('9')"></td>
+            <td><input type="button" value="-" onclick="addToDisplay('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="addToDisplay('0')"></td>
+            <td><input type="button" value="." onclick="addToDisplay('.')"></td>
+            <td><input type="button" value="=" onclick="calculate()"></td>
+            <td><input type="button" value="+" onclick="addToDisplay('+')"></td>
+        </tr>
+    </table>
+    <p style="text-align: center; font-size: 20px; margin-top: 20px;">PartialCalc</p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add some basic styling for the clock */
+        #clock {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a div to display the clock -->
+    <div id="clock"></div>
+
+    <script>
+        // Function to update the clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+
+            // Convert to 12-hour format
+            hours = (hours % 12) || 12;
+
+            // Get the clock div element
+            const clockDiv = document.getElementById('clock');
+
+            // Set the text inside the clock div to the current time
+            clockDiv.innerText = `${hours}:${minutes}:${seconds} ${amPm}`;
+        }
+
+        // Call the updateClock function every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to set the clock immediately
+        updateClock();
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add some basic styling for the button */
+        #dino-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create the button -->
+    <button id="dino-button">Play Remastered Dino Game</button>
+
+    <script>
+        // Add an event listener to the button
+        document.getElementById('dino-button').addEventListener('click', function() {
+            // Redirect to the remastered Chrome dinosaur game
+            window.location.href = 'https://chromedino.com/';
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add some basic styling for the button */
+        #pacman-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background-color: #FFD700;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create the button -->
+    <button id="pacman-button">Play Pac-Man Remastered</button>
+
+    <script>
+        // Add an event listener to the button
+        document.getElementById('pacman-button').addEventListener('click', function() {
+            // Redirect to the remastered Pac-Man game
+            window.location.href = 'https://pacman.cc//';
+        });
+    </script>
+</body>
+</html>
