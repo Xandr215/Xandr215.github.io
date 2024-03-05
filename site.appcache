@@ -3,9 +3,9 @@ CACHE MANIFEST
 
 CACHE:
 # main
-/index.html
-/irc.html
-/contact.html
+index.html
+irc.html
+contact.html
 # games
 /games/index.html
 /games/guessnum.html
@@ -68,6 +68,9 @@ CACHE:
 /utilities/index.html
 /utilities/numtools.html
 /utilities/partialcalc.html
+
+# other
+site.appcache
 
 # other
 /games/edgesurf/manifest.json
