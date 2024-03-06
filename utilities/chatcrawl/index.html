@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.jpeg">
+    <title>ChatCrawl</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>ChatCrawl - Web Crawler</h1>
+    <img src="images/logo.jpeg" alt="Logo" width="256" height="256">
+    <form id="searchForm">
+        <label for="query">Enter search query:</label>
+        <input type="text" id="query" name="query">
+        <select id="siteOption">
+            <option value="">Search All</option>
+            <option value="imdb">IMDb</option>
+            <option value="youtube">YouTube</option>
+            <option value="wikipedia">Wikipedia</option>
+            <option value="custom">Custom Site</option>
+        </select>
+        <input type="text" id="customSite" style="display:none;" placeholder="Enter Custom Site URL">
+        <select id="searchType">
+            <option value="all">All</option>
+            <option value="images">Images</option>
+            <option value="news">News</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('siteOption').addEventListener('change', function() {
+            var customSiteInput = document.getElementById('customSite');
+            if (this.value === 'custom') {
+                customSiteInput.style.display = 'block';
+            } else {
+                customSiteInput.style.display = 'none';
+                customSiteInput.value = ''; // Reset the custom site input field
+            }
+        });
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var query = document.getElementById('query').value;
+            var selectedSite = document.getElementById('siteOption').value;
+            var selectedType = document.getElementById('searchType').value;
+            if (query.trim() === '') {
+                alert('Please enter a search query.');
+                return;
+            }
+
+            var searchQuery = query;
+            if (selectedSite === 'custom') {
+                var customSiteURL = document.getElementById('customSite').value.trim();
+                if (customSiteURL === '') {
+                    alert('Please enter a custom site URL.');
+                    return;
+                }
+                searchQuery += ' site:' + customSiteURL;
+            } else if (selectedSite !== '') {
+                var siteOptions = {
+                    'imdb': 'imdb.com',
+                    'youtube': 'youtube.com',
+                    'wikipedia': 'wikipedia.org',
+                    // Add more predefined sites and their respective URLs here
+                };
+                var siteURL = siteOptions[selectedSite];
+                if (siteURL) {
+                    searchQuery += ' site:' + siteURL;
+                }
+            }
+
+            if (selectedType !== 'all') {
+                searchQuery += '&tbm=' + selectedType;
+            }
+
+            search(searchQuery);
+        });
+
+        function search(query) {
+            var searchEngines = ['Google', 'Bing', 'DuckDuckGo'];
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            function fetchResultsSequentially(index) {
+                if (index >= searchEngines.length) {
+                    return;
+                }
+
+                fetchResults(searchEngines[index], query)
+                    .then(function(results) {
+                        displayResults(searchEngines[index], results);
+                        fetchResultsSequentially(index + 1);
+                    })
+                    .catch(function(error) {
+                        console.error('Error fetching results from ' + searchEngines[index] + ':', error);
+                        fetchResultsSequentially(index + 1);
+                    });
+            }
+
+            fetchResultsSequentially(0);
+        }
+
+        function fetchResults(engine, query) {
+            return new Promise(function(resolve, reject) {
+                var url = '';
+                switch (engine) {
+                    case 'Google':
+                        url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                        break;
+                    case 'Bing':
+                        url = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+                        break;
+                    case 'DuckDuckGo':
+                        url = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
+                        break;
+                    default:
+                        reject('Invalid search engine: ' + engine);
+                        return;
+                }
+                resolve({
+                    engine: engine,
+                    url: url
+                });
+            });
+        }
+
+        function displayResults(engine, result) {
+            var resultsDiv = document.getElementById('results');
+            var heading = document.createElement('h2');
+            heading.textContent = engine + ' Results:';
+            resultsDiv.appendChild(heading);
+
+            var listItem = document.createElement('li');
+            var link = document.createElement('a');
+            link.href = result.url;
+            link.target = '_blank'; // Open link in a new tab
+            link.textContent = result.engine + ' Search Results';
+            listItem.appendChild(link);
+            resultsDiv.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
