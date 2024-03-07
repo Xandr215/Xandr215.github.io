@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGenie</title>
+    <title>ChatGenie</title> <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background-color: #7E6FD6;
+            background-color: #7B1FA2;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -14,17 +14,17 @@
         #header {
             text-align: center;
             padding: 20px;
-            background-color: #7E6FD6;
+            background-color: #7B1FA2;
         }
         canvas {
             display: none; /* Hide the canvas by default */
             margin: 20px auto;
-            background-color: #7E6FD6;
+            background-color: #7B1FA2;
         }
         #chat-log {
             margin-top: 20px;
             padding: 10px;
-            background-color: #7E6FD6;
+            background-color: #7B1FA2;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -46,9 +46,23 @@
             z-index: 1;
             position: absolute;
         }
+
+        /* Additional styles for the clock */
+        #clock {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: black;
+            font-size: 20px;
+            cursor: pointer; /* Change cursor to indicate it's clickable */
+        }
+
+        /* Additional style to position the search box at the bottom */
+
     </style>
 </head>
 <body>
+  <button onclick="window.location.href='mathgenie.html'">Switch Genie</button>
     <div id="header">
         <h1>ChatGenie</h1>
     </div>
@@ -57,6 +71,15 @@
     <button id="clear-button">Reset Chat</button>
     <button id="credits-button">Credits</button>
     <canvas id="pingPongCanvas" width="800" height="400" style="border: 1px solid black;"></canvas> 
+    <!-- Clock div -->
+    <div id="clock"></div>
+
+    <!-- Search box container at the bottom -->
+    <div class="search-container">
+        <!-- Embed Google Custom Search Engine -->
+      
+        <div class="ccsearch"></div>
+    </div>
     <script>
         const chatLog = document.getElementById('chat-log');
         const userInput = document.getElementById('user-input');
@@ -79,12 +102,60 @@
         let keys = {};
         let canvasClicked = false; // Track whether the canvas is clicked
 
+        // Function to update the clock
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Handle midnight (0 hours)
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var timeString = hours + ':' + minutes + ' ' + ampm;
+            document.getElementById('clock').textContent = timeString;
+            setTimeout(updateClock, 1000); // Update the clock every second
+        }
+
+        // Call the function to initially set up the clock
+        updateClock();
+
+        // Add event listener to the clock for displaying time-specific messages
+      document.getElementById('clock').addEventListener('click', function() {
+          var now = new Date();
+          var hours = now.getHours();
+          var ampm = hours >= 12 ? 'pm' : 'am'; // Check if it's AM or PM
+
+          var message;
+
+          if ((hours >= 0 && hours < 3) || (hours >= 12 && hours < 15)) {
+              message = "Why are you awake?";
+          } else if (hours >= 3 && hours < 5) {
+              message = "Don't wake up at 3 am";
+          } else if (hours >= 5 && hours < 7) {
+              message = "Ok, you can wake up now";
+          } else if (hours >= 7 && hours < 12) {
+              message = "Good morning, how are ya?";
+          } else if (hours >= 15 && hours < 18) {
+              message = "Go have some fun";
+          } else if (hours >= 18 && hours < 21) {
+              message = "Welp, time for bed";
+          } else {
+              message = "Seriously, go to bed";
+          }
+
+          alert("Current time: " + document.getElementById('clock').textContent + " " + ampm + "\n" + message);
+      });
+
+      creditsButton.addEventListener('click', function() {
+          // Your code for creditsButton click event
+      });
+
         creditsButton.addEventListener('click', function() {
             sendMessage("credits");
         });
-      
+
         userInput.addEventListener('keyup', function(event) {
-            if (event.keyCode === 13) {
+            if (!canvasClicked && event.keyCode === 13) {
                 const userInputValue = userInput.value.toLowerCase();
                 sendMessage(userInputValue);
                 if (userInputValue === "pingpong") {
@@ -110,7 +181,7 @@
             else if (sanitizedMessage.includes('hello') || sanitizedMessage.includes('hi') || sanitizedMessage.includes('hey')) {
                 displayMessage('ChatGenie: Hello, I\'m ChatGenie!');
             } else if (sanitizedMessage.includes('credits')) {
-                displayMessage("Lead Dev and Owner: Zak Spocter. Devs: Anders Thoreson, Xander Buckner, Eden Romp.");
+                displayMessage("Owner: Zak. Lead Dev: Xander Buckner. Devs: A. Thoreson, Eden.");
             } else if (sanitizedMessage.includes('type your message here')) {
                 displayMessage('ChatGenie: Using placeholder text, are we?');
             } else if (sanitizedMessage.includes('you are')) {

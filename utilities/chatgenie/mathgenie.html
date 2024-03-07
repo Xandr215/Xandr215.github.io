@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGenie</title>
+    <style>
+        body {
+            background-color:#7B1FA2 ;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            width: 48%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+<button onclick="window.location.href='index.html'">Switch Genie</button>
+<div class="calculator">
+    <h1>Math Genie</h1>
+    <input type="text" id="equation" placeholder="Enter equation">
+    <input type="button" value="7" onclick="appendToEquation('7')">
+    <input type="button" value="8" onclick="appendToEquation('8')">
+    <!-- Add other number buttons (1-9) here -->
+    <input type="button" value="+" onclick="appendToEquation('+')">
+    <input type="button" value="-" onclick="appendToEquation('-')">
+    <input type="button" value="*" onclick="appendToEquation('*')">
+    <input type="button" value="/" onclick="appendToEquation('/')">
+    <input type="button" value="." onclick="appendToEquation('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="Fractions" onclick="switchToFractions()">
+    <input type="button" value="Numerals" onclick="switchToNumerals()">
+    <input type="text" id="result" readonly>
+</div>
+
+<script>
+    let useFractions = false;
+
+    function appendToEquation(value) {
+        document.getElementById('equation').value += value;
+    }
+
+    function calculate() {
+        try {
+            const equation = document.getElementById('equation').value;
+            let result = useFractions ? evalFraction(equation) : eval(equation);
+            document.getElementById('result').value = result;
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+    }
+
+    function switchToFractions() {
+        useFractions = true;
+    }
+
+    function switchToNumerals() {
+        useFractions = false;
+    }
+
+    // Function to evaluate fractions
+    function evalFraction(equation) {
+        // Parse the equation into operands and operator
+        const [operand1, operator, operand2] = equation.split(/[+\-*\/]/);
+        const [num1, denom1] = operand1.split('/');
+        const [num2, denom2] = operand2.split('/');
+
+        // Convert operands to fractions
+        const fraction1 = parseInt(num1) / parseInt(denom1);
+        const fraction2 = parseInt(num2) / parseInt(denom2);
+
+        // Perform the operation
+        let result;
+        switch (operator) {
+            case '+':
+                result = fraction1 + fraction2;
+                break;
+            case '-':
+                result = fraction1 - fraction2;
+                break;
+            case '*':
+                result = fraction1 * fraction2;
+                break;
+            case '/':
+                result = fraction1 / fraction2;
+                break;
+            default:
+                throw new Error('Invalid operator');
+        }
+
+        return result;
+    }
+</script>
+</body>
+</html>
