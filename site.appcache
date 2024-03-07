@@ -70,6 +70,10 @@ contact.html
 /utilities/numtools.html
 /utilities/partialcalc.html
 /utilities/chatcrawl/index.html
+# chatgenie
+/utilities/chatgenie/index.html
+/utilities/chatgenie/mathgenie.html
+/utilities/chatgenie/styles.css
 
 # other
 site.appcache
