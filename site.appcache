@@ -4,7 +4,6 @@ CACHE MANIFEST
 CACHE:
 # main
 index.html
-irc.html
 contact.html
 # games
 /games/index.html
@@ -69,6 +68,7 @@ contact.html
 /utilities/numtools.html
 /utilities/partialcalc.html
 /utilities/chatcrawl/index.html
+/utilities/chat.html
 # chatgenie
 /utilities/chatgenie/index.html
 /utilities/chatgenie/mathgenie.html
