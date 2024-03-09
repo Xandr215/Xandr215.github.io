@@ -7,7 +7,10 @@
       body {
       font-family: verdana;
       }
-        
+        iframe {
+    display: block;
+    border-style:none;
+}
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -42,5 +45,11 @@
   <a href="partialcalc.html">PartialCalc (not mine!)</a>
 </div>
 <p>Embedded IRC. I'll add more later tbh.</p>
-<iframe width="550" height="350" scrolling="no" src="https://widget.mibbit.com/?settings=5ddda0fef14d34db9b50a68b11dc4baf&server=irc.mibbit.net%3A%2B6697&channel=%23xandr215"></iframe>
+<p id="demo"></p>
+
+<script>
+var w = window.innerWidth - 10;
+var h = window.innerHeight - (14+(5*2));
+</script>
+    <iframe width="w" height="h" scrolling="no" src="https://widget.mibbit.com/?settings=5ddda0fef14d34db9b50a68b11dc4baf&server=irc.mibbit.net%3A%2B6697&channel=%23xandr215"></iframe>
 </html>
