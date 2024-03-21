@@ -57,6 +57,14 @@ footer img:hover {
     display: inline-block;
 }
 
+.githubLink:hover .greyLogo {
+    display: none;
+}
+
+.githubLink:hover .colorLogo {
+    display: inline-block;
+}
+
 .fadeIn {
     opacity: 1;
 }
