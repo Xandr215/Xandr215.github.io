@@ -1,0 +1,63 @@
+CACHE MANIFEST
+# v1.4 : 05-27-2024
+
+CACHE:
+# main
+/index.html
+/guessnum.html
+/rps.html
+/memory.html
+.appcache
+# edgesurf
+# styles and scripts
+/edgesurf/resources/css/interface.css
+/edgesurf/resources/js/assert.js
+/edgesurf/resources/js/base-error-reporting.js
+/edgesurf/resources/js/cr.js
+/edgesurf/resources/js/lib_common.chunk.js
+/edgesurf/resources/js/lib_react.chunk.js
+/edgesurf/resources/js/load_time_data.js
+/edgesurf/resources/js/parse_html_subset.js
+/edgesurf/resources/js/promise_resolver.js
+/edgesurf/resources/js/strings.js
+/edgesurf/resources/js/surf-error-reporting.js
+/edgesurf/resources/js/surf.bundle.js
+/edgesurf/resources/js/util.js
+# icons
+/edgesurf/resources/icons/favicon.png
+/edgesurf/resources/icons/favicon.svg
+/edgesurf/resources/icons/ms-icon-144x144.png
+/edgesurf/resources/icons/ms-icon-150x150.png
+/edgesurf/resources/icons/ms-icon-310x310.png
+/edgesurf/resources/icons/ms-icon-70x70.png
+/edgesurf/resources/icons/apple-icon-60x60.png
+/edgesurf/resources/icons/apple-icon-57x57.png
+/edgesurf/resources/icons/apple-icon-76x76.png
+/edgesurf/resources/icons/apple-icon-72x72.png
+/edgesurf/resources/icons/apple-icon-180x180.png
+/edgesurf/resources/icons/apple-icon-120x120.png
+/edgesurf/resources/icons/apple-icon-114x114.png
+/edgesurf/resources/icons/apple-icon-144x144.png
+/edgesurf/resources/icons/apple-icon-152x152.png
+/edgesurf/resources/icons/apple-icon-precomposed.png
+/edgesurf/resources/icons/apple-icon.png
+/edgesurf/resources/icons/android-icon-72x72.png
+/edgesurf/resources/icons/android-icon-36x36.png
+/edgesurf/resources/icons/android-icon-48x48.png
+/edgesurf/resources/icons/android-icon-96x96.png
+/edgesurf/resources/icons/android-icon-144x144.png
+/edgesurf/resources/icons/android-icon-192x192.png
+
+# textures
+# surf
+/edgesurf/resources/surf/bg.png
+/edgesurf/resources/surf/objects.png
+/edgesurf/resources/surf/player.png
+# ski
+/edgesurf/resources/ski/bg.png
+/edgesurf/resources/ski/objects.png
+/edgesurf/resources/ski/player.png
+
+# other
+/edgesurf/manifest.json
+/edgesurf/browserconfig.xml
