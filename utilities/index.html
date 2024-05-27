@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html manifest="util.appcache", lang="en-us">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Xandr215's Utilities</title>
-    <link rel="icon" type="image/x-icon" href="https://xandr215.github.io/images/favicon.ico">
+<meta charset="UTF-8">
+    <title>Xandr215's Site</title>
+    <link rel="icon" type="image/x-icon" href="https://xandr215.github.io/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 body {
+  background: linear-gradient(to bottom right, #20b2aa, #00ff00);
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  color: white;
+  font-family: "Ubuntu", Arial, sans-serif;
 }
 
 .topnav {
+  position: relative;
   overflow: hidden;
   background-color: #333;
 }
@@ -33,24 +42,59 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.topnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+  
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+    h1 {
+        font-family: "Ubuntu Mono", Arial, sans-serif;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
-
 <div class="topnav">
-  <a href="https://xandr215.github.io">Back home</a>
+    
+  <div class="topnav-centered">
+    <a href="index.html" class="active">Utilities</a>
+  </div>
+
+  <a href="https://xandr215.github.io/games">Games</a>
+  
+  <div class="topnav-right">
+    <a href="https://xandr215.github.io">Home</a>
+  </div>
+</div>
+    <h1>Xandr215's Utilities</h1>
+    
+<div class="utils" style="text-align: center;">
   <a href="numtools.html">NumberTools</a>
-  <a href="chatgenie">ChatGenie (not mine!)</a>
+  <a href="https://chatgenie-team.github.io">ChatGenie (not mine!)</a>
   <a href="chatcrawl">ChatCrawl</a>
   <a href="partialcalc.html">PartialCalc (not mine!)</a>
-  <a href="https://x215.w3spaces.com">My W3Spaces</a>
 </div>
-
-  <body>
-    <h1 style="font-family: verdana;">Hello, world!</h1>
-    <h2 style="font-family: verdana;">This is Xandr215's GitHub Pages utilities.</h2>
-    <p style="font-family: verdana;">Feel free to use the utilities here.</p>
-  <br>
-
 </body>
 </html>
