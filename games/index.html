@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html manifest="games.appcache", lang="en-us">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
     <title>Xandr215's Games</title>
-    <link rel="icon" type="image/x-icon" href="https://xandr215.github.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://xandr215.github.io/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 body {
+  background: linear-gradient(to bottom right, #20b2aa, #00ff00);
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  color: white;
+  font-family: "Ubuntu", Arial, sans-serif;
 }
 
 .topnav {
+  position: relative;
   overflow: hidden;
   background-color: #333;
 }
@@ -33,22 +42,57 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.topnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+  
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+.games {
+    text-align: center;
+}
 </style>
 </head>
 <body>
-
 <div class="topnav">
-  <a href="https://xandr215.github.io">Back home</a>
-  <a href="edgesurf">MS Edge Surf Port (not mine!)</a>
-  <a href="guessnum.html">Guess the Number</a>
-  <a href="rps.html">Rock Paper Scissors</a>
+    
+  <div class="topnav-centered">
+    <a href="index.html" class="active">Games</a>
+  </div>
+
+  <a href="https://xandr215.github.io">Home</a>
+  
+  <div class="topnav-right">
+    <a href="https://xandr215.github.io/utilities">Utilities</a>
+  </div>
 </div>
-
-  <body>
-    <h1 style="font-family: verdana;">Hello, world!</h1>
-    <h2 style="font-family: verdana;">This is Xandr215's GitHub Pages games.</h2>
-    <p style="font-family: verdana;">Feel free to play the games here.</p>
-  <br>
-
+    <h1 style="text-align: center; font-family: 'Ubuntu Mono', Arial, sans-serif;">Xandr215's Games</h1>
+    <div class="games">
+        <a href="edgesurf">MS Edge Surf Port (not mine!)</a>
+        <a href="guessnum.html">Guess the Number</a>
+        <a href="rps.html">Rock Paper Scissors</a>
+        <a href="memory.html">Memory</a>
+    </div>
 </body>
 </html>
