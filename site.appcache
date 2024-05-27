@@ -1,14 +1,14 @@
 CACHE MANIFEST
-# v1.0 : 10-08-2014
+# v1.4 : 05-27-2024
 
 CACHE:
 # main
 index.html
-contact.html
 # games
 /games/index.html
 /games/guessnum.html
 /games/rps.html
+/games/memory.html
 # edgesurf
 # styles and scripts
 /games/edgesurf/resources/css/interface.css
