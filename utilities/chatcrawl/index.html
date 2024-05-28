@@ -161,7 +161,7 @@ body {
         });
 
         function search(query) {
-            var searchEngines = ['Google', 'Bing', 'DuckDuckGo'];
+            var searchEngines = ['Google', 'Bing', 'DuckDuckGo', 'YouTube', 'IMDb', 'Wikipedia'];
             var resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = '';
 
@@ -196,6 +196,15 @@ body {
                         break;
                     case 'DuckDuckGo':
                         url = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
+                        break;
+                    case 'YouTube':
+                        url = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query);
+                        break;
+                    case 'IMDb':
+                        url = 'https://www.imdb.com/find/?q=' + encodeURIComponent(query);
+                        break;
+                    case 'Wikipedia':
+                        url = 'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(query) + '&title=Special%3ASearch&ns0=1';
                         break;
                     default:
                         reject('Invalid search engine: ' + engine);
