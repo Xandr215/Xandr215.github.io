@@ -5,4 +5,3 @@ Changes:
 - UI/UX will be getting a whole new design
 - Some tools will be getting an update
 - More games are being added & Redesigning + renaming the "Games" UI to Arcade
-- I forgot the other update
