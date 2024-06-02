@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xandr215's Memory</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Ubuntu", Arial, sans-serif;
+            background: linear-gradient(to bottom right, #20b2aa, #00ff00);
+            margin: 0;
+            height: 100vh;
+            color: #fff
+        }
+
+        h1 {
+            margin: 20px;
+            font-size: 2em;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(6, 100px);
+            grid-gap: 10px;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+
+        .card.flipped {
+            background-color: #ffeb3b;
+            border-color: #ffc107;
+            transform: rotateY(180deg);
+        }
+
+        .card.matched {
+            background-color: #8bc34a;
+            border-color: #689f38;
+            cursor: default;
+        }
+
+        #new-game-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #new-game-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes winAnimation {
+            0% { background-color: #8bc34a; }
+            50% { background-color: #ffeb3b; }
+            100% { background-color: #8bc34a; }
+        }
+
+        .win-animation {
+            animation: winAnimation 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Xandr215's Memory</h1>
+    <div id="game-board"></div>
+    <button id="new-game-btn">New Game</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const emojis = ['✨', '💡', '⌨️', '🖱️', '💾', '📀', '📱', '💻', '📸', '📹', '📼', '🎮'];
+            let cardArray = [];
+            let hasFlippedCard = false;
+            let lockBoard = false;
+            let firstCard, secondCard;
+            let matchedCards = 0;
+
+            const gameBoard = document.getElementById('game-board');
+            const newGameBtn = document.getElementById('new-game-btn');
+
+            function shuffleCards() {
+                cardArray = [...emojis, ...emojis];
+                cardArray.sort(() => 0.5 - Math.random());
+            }
+
+            function createBoard() {
+                gameBoard.innerHTML = '';
+                shuffleCards();
+                cardArray.forEach((emoji, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.dataset.emoji = emoji;
+                    card.dataset.index = index;
+                    card.addEventListener('click', flipCard);
+                    gameBoard.appendChild(card);
+                });
+            }
+
+            function flipCard() {
+                if (lockBoard) return;
+                if (this === firstCard) return;
+
+                this.classList.add('flipped');
+                this.textContent = this.dataset.emoji;
+
+                if (!hasFlippedCard) {
+                    hasFlippedCard = true;
+                    firstCard = this;
+                    return;
+                }
+
+                secondCard = this;
+                checkForMatch();
+            }
+
+            function checkForMatch() {
+                let isMatch = firstCard.dataset.emoji === secondCard.dataset.emoji;
+
+                isMatch ? disableCards() : unflipCards();
+            }
+
+            function disableCards() {
+                firstCard.removeEventListener('click', flipCard);
+                secondCard.removeEventListener('click', flipCard);
+
+                firstCard.classList.add('matched');
+                secondCard.classList.add('matched');
+                matchedCards += 2;
+
+                if (matchedCards === cardArray.length) {
+                    showWinAnimation();
+                }
+
+                resetBoard();
+            }
+
+            function unflipCards() {
+                lockBoard = true;
+
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    secondCard.classList.remove('flipped');
+
+                    firstCard.textContent = '';
+                    secondCard.textContent = '';
+
+                    resetBoard();
+                }, 1000);
+            }
+
+            function resetBoard() {
+                [hasFlippedCard, lockBoard] = [false, false];
+                [firstCard, secondCard] = [null, null];
+            }
+
+            function showWinAnimation() {
+                const cards = document.querySelectorAll('.card.matched');
+                cards.forEach(card => card.classList.add('win-animation'));
+                newGameBtn.style.display = 'block';
+            }
+
+            newGameBtn.addEventListener('click', () => {
+                matchedCards = 0;
+                createBoard();
+                newGameBtn.style.display = 'none';
+            });
+
+            createBoard();
+        });
+    </script>
+</body>
+</html>

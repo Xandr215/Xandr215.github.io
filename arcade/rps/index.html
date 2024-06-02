@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #20b2aa, #00ff00);
+      margin: 0;
+      height: 100vh;
+      font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    button {
+      width: 100px;
+      height: 100px;
+      border: none;
+      border-radius: 50%;
+      margin: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #rock {
+      background-color: #f0f0f0;
+    }
+
+    #paper {
+      background-color: #f0f0f0;
+    }
+
+    #scissors {
+      background-color: #f0f0f0;
+    }
+
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #score {
+      font-size: 20px;
+    }
+
+    #high-score {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rock Paper Scissors</h1>
+    <p>Choose one of the options and try to beat the computer.</p>
+    <button id="rock">👊</button> 
+    <button id="paper">🖐️</button> 
+    <button id="scissors">✌️</button>
+    <p id="result">Let's play!</p>
+    <p id="score">You: 0 | Computer: 0</p>
+    <p id="high-score">High Score: 0</p>
+  </div>
+  <script>
+    // Get the elements from the document
+    var rock = document.getElementById("rock");
+    var paper = document.getElementById("paper");
+    var scissors = document.getElementById("scissors");
+    var result = document.getElementById("result");
+    var score = document.getElementById("score");
+    var highScore = document.getElementById("high-score");
+
+    // Initialize the score variables
+    var userScore = 0;
+    var computerScore = 0;
+    var userHighScore = 0;
+
+    // Get the high score from the localStorage, if it exists
+    if (localStorage.getItem("userHighScore")) {
+      userHighScore = localStorage.getItem("userHighScore");
+      // Update the high score display
+      highScore.innerHTML = "High Score: " + userHighScore;
+    }
+
+    // Define the options array
+    var options = ["rock", "paper", "scissors"];
+
+    // Define the random number generator function
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Define the computer choice function
+    function getComputerChoice() {
+      // Generate a random number between 1 and 16
+      var randomNumber = getRandomNumber(1, 16);
+      // Assign the corresponding option based on the criteria
+      if (randomNumber === 1 || randomNumber === 4 || randomNumber === 7 || randomNumber === 10 || randomNumber === 14) {
+        return "rock";
+      } else if (randomNumber === 2 || randomNumber === 5 || randomNumber === 8 || randomNumber === 11 || randomNumber === 15) {
+        return "paper";
+      } else if (randomNumber === 3 || randomNumber === 6 || randomNumber === 9 || randomNumber === 12 || randomNumber === 16) {
+        return "scissors";
+      }
+    }
+
+    // Define the game logic function
+    function playGame(userChoice) {
+      // Get the computer choice
+      var computerChoice = getComputerChoice();
+      // Compare the choices and determine the winner
+      if (userChoice === computerChoice) {
+        // It is a tie
+        result.innerHTML = "It's a tie!";
+      } else if (userChoice === "rock" && computerChoice === "scissors" || userChoice === "paper" && computerChoice === "rock" || userChoice === "scissors" && computerChoice === "paper") {
+        // User wins
+        result.innerHTML = "You win!";
+        // Increment the user score
+        userScore++;
+        // Check if the user score is higher than the high score
+        if (userScore > userHighScore) {
+          // Update the high score
+          userHighScore = userScore;
+          // Store the high score in the localStorage
+          localStorage.setItem("userHighScore", userHighScore);
+          // Update the high score display
+          highScore.innerHTML = "High Score: " + userHighScore;
+        }
+      } else {
+        // Computer wins
+        result.innerHTML = "You lose!";
+        // Increment the computer score
+        computerScore++;
+      }
+      // Update the score display
+      score.innerHTML = "You: " + userScore + " | Computer: " + computerScore;
+    }
+
+    // Add event listeners to the buttons
+    rock.addEventListener("click", function() {
+      // User chooses rock
+      playGame("rock");
+    });
+
+    paper.addEventListener("click", function() {
+      // User chooses paper
+      playGame("paper");
+    });
+
+    scissors.addEventListener("click", function() {
+      // User chooses scissors
+      playGame("scissors");
+    });
+  </script>
+</body>
+</html>

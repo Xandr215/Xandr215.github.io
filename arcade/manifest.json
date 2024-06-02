@@ -1,0 +1,17 @@
+{
+    "short_name": "Arcade",
+    "name": "Xandr's Arcade",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/index.html",
+    "version": "2.0",
+    "background_color": "#20B2AA",
+    "display": "fullscreen",
+    "scope": "/",
+    "theme_color": "#20B2AA"
+}
