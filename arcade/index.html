@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Arcade</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #20b2aa, #0f0);
+            margin: 0;
+            height: 100vh;
+            font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:visited {
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 80%;
+        }
+
+        .preview {
+            flex: 3;
+            width: 1280;
+            height: 960;
+            aspect-ratio: 4 / 3;
+            border: 2px solid white;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .preview img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: none;
+        }
+
+        .game-list {
+            flex: 2;
+            text-align: left;
+        }
+
+        .game-list h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .game-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .game-list li {
+            font-size: 24px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .game-list li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .game-list li:hover .game-title {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="preview" id="preview">
+            <img id="gameImage" src="" alt="Game Preview">
+        </div>
+        <div class="game-list">
+            <h2>Games</h2>
+            <ul id="gameList">
+                <li data-img="cf/image.png"><a href="cf/index.html" data-img="cf/image.png" target=”_blank”>Court Fighters</a></li>
+                <li data-img="ccp/image.png"><a href="ccp/index.html" data-img="ccp/image.png" target="_blank">Corgi Care+</a></li>
+                <li data-img="slots/image.png"><a href="slots/index.html" data-img="slots/image.png" target="_blank">Slots</a></li>
+                <li data-img="cmg/plactions.png"><a href="https://coolmathgames.com/0-plactions/play" data-img="cmg/plactions.png" target="_blank">Plactions</a></li>
+                <li data-img="cmg/oppositeday.png"><a href="https://coolmathgames.com/0-opposite-day/play" data-img="cmg/oppositeday.png" target="_blank">Opposite Day</a></li>
+                <li data-img="cmg/suika.png"><a href="https://coolmathgames.com/0-suika-watermelon-game/play" data-img="cmg/suika.png" target="_blank">Suika</a></li>
+                <li data-img="cs/image.png"><a href="cs/index.html" data-img="cs/image.png" target="_blank">Crystal Seeker</a></li>
+                <li data-img="flappy/image.png"><a href="flappy/index.html" data-img="flappy/image.png" target="_blank">Flappy Bird</a></li>
+                <li data-img="edgesurf/image.png"><a href="edgesurf/index.html" data-img="edgesurf/image.png" target="_blank">Let's Surf/Ski</a></li>
+                <li data-img="rps/image.png"><a href="rps/index.html" data-img="rps/image.png" target="_blank">Rock Paper Scissors</a></li>
+                <li data-img="guessnum/image.png"><a href="guessnum/index.html" data-img="guessnum/image.png" target="_blank">Guess the Number</a></li>
+                <li data-img="memory/image.png"><a href="memory/index.html" data-img="memory/image.png" target="_blank">Memory</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('#gameList li').forEach(item => {
+            item.addEventListener('mouseover', event => {
+                const imgSrc = event.target.getAttribute('data-img');
+                const img = document.getElementById('gameImage');
+                img.src = imgSrc;
+                img.style.display = 'block';
+            });
+            item.addEventListener('mouseleave', event => {
+                const img = document.getElementById('gameImage');
+                img.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
