@@ -2,6 +2,6 @@
 a repository for my GitHub Pages website
 ## v2 Update
 Changes:
-- UI/UX will be getting a whole new design
-- Some tools will be getting an update
-- More games are being added & Redesigning + renaming the "Games" UI to Arcade
+- UI/UX has a whole new design
+- Some tools will get an update
+- More games are added & Redesigned + renamed the "Games" UI to "Arcade"
