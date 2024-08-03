@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'site-cache';
+const CACHE_NAME = 'serviceWorker';
 const urlsToCache = [
   '/'
   '/images/favicon.png'
