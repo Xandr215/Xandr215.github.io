@@ -1,98 +1,71 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-    <title>Xandr215's Site</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <script src="swreg.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<style>
-body {
-  background: linear-gradient(to bottom right, #20b2aa, #00ff00);
-  margin: 0;
-  height: 100vh;
-  color: white;
-  font-family: "Ubuntu", Arial, sans-serif;
-}
-
-.topnav {
-  position: relative;
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.topnav-centered a {
-  float: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.topnav-right {
-  float: right;
-}
-
-/* Responsive navigation menu (for mobile devices) */
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav-right {
-    float: none;
-    display: block;
-  }
-  
-  .topnav-centered a {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
-}
-    h1 {
-        font-family: "Ubuntu", Arial, sans-serif;
-        text-align: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
     }
-</style>
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      padding: 20px;
+    }
+    .tile {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+      padding: 20px;
+    }
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    .footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<div class="topnav">
-    
-  <div class="topnav-centered">
-    <a href="index.html" class="active">Home</a>
+  <div class="container">
+    <div class="tile">
+      <h2>About Me</h2>
+      <p>Write a brief introduction about yourself here.</p>
+    </div>
+    <div class="tile">
+      <h2>Interests</h2>
+      <p>Likes</p>
+    </div>
+    <div class="tile">
+      <h2>What I Do</h2>
+      <p>Man i sure like coding and gaming</p>
+    </div>
+    <div class="tile">
+      <h2>Projects</h2>
+      <p>Showcase your projects here.</p>
+    </div>
   </div>
-
-  <a href="arcade">Arcade</a>
-  
-  <div class="topnav-right">
-    <a href="utilities">Utilities</a>
+  <div class="footer">
+    <p>Made by Xandr215</p>
+    <p>
+      <a href="https://steamcommunity.com/id/XGamez215/">Steam</a>
+      <a href="https://github.com/@Xandr215">GitHub</a>
+      <a href="https://discord.com/users/821127583017992215">Discord</a>
+    </p>
   </div>
-</div>
-    <h1 style="text-align: center;">Xandr215's Site</h1>
-    <p style="text-align: center;">I like messing with things and seeing how broken I can make them</p>
-    <p style="text-align: center;">Also an iOS beta tester, Minecraft player, and more</p>
-    <p style="text-align: center;">I work on many projects with my friends, like Squares Center and ChatGem with one, Squares Center Games as a development showcase for Squares Center upcoming games.</p>
-    <p style="text-align: center;">Check out the things on that navbar up there</p>
 </body>
 </html>
