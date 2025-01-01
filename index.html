@@ -167,7 +167,7 @@ function updateCountdown() {
             const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-            countdownElement.textContent = `Countdown to New Year (UTC-6): ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.textContent = `Countdown to New Year (local time): ${days}d ${hours}h ${minutes}m ${seconds}s`;
         } else {
             countdownElement.textContent = "Happy New Year!";
         }
