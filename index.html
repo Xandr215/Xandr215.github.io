@@ -61,7 +61,6 @@ body {
   float: right;
 }
 
-/* Responsive navigation menu (for mobile devices) */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav-right {
     float: none;
@@ -82,7 +81,7 @@ h1 {
 }
 
 .content {
-  flex: 1; /* Pushes the footer to the bottom */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,13 +109,19 @@ footer .icons a {
 }
 
 footer .icons img {
-  height: 32px; /* Adjust size of the icons */
-  width: 32px;  /* Adjust size of the icons */
+  height: 32px;
+  width: 32px;
 }
 
 footer .icons a:hover img {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
   transition: transform 0.2s ease;
+}
+
+#countdown {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -136,6 +141,8 @@ footer .icons a:hover img {
     <p style="text-align: center;">Also an iOS beta tester, Minecraft player, and more</p>
     <p style="text-align: center;">I work on many projects with my friends, like Squares Center and ChatGem with one, Squares Center Games as a development showcase for Squares Center upcoming games.</p>
     <p style="text-align: center;">Check out the things on that navbar up there</p>
+
+    <div id="countdown"></div>
 </div>
 <footer>
     <div class="icons">
@@ -145,5 +152,26 @@ footer .icons a:hover img {
     </div>
     <p>Made by Xandr215</p>
 </footer>
+<script>
+function updateCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    const now = new Date();
+    const year = now.getUTCFullYear() + 1; // Next year
+    const newYearUTC6 = new Date(Date.UTC(year, 0, 1, 6, 0, 0)); // Midnight UTC-6
+    const timeDiff = newYearUTC6 - now;
+
+    if (timeDiff > 0) {
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        countdownElement.textContent = `Countdown to New Year (UTC-6): ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        countdownElement.textContent = "Happy New Year!";
+    }
+}
+
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
