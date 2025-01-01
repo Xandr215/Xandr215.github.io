@@ -156,8 +156,7 @@ footer .icons a:hover img {
 function updateCountdown() {
     const countdownElement = document.getElementById('countdown');
     const now = new Date();
-    const year = now.getUTCFullYear() + 1; // Next year
-    const newYearUTC6 = new Date(Date.UTC(year, 0, 1, 6, 0, 0)); // Midnight UTC-6
+    const newYearUTC6 = new Date(Date.UTC(2025, 0, 1, 6, 0, 0)); // Midnight UTC-6 on January 1, 2025
     const timeDiff = newYearUTC6 - now;
 
     if (timeDiff > 0) {
