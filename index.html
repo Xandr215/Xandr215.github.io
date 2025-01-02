@@ -62,6 +62,15 @@ body {
   float: right;
 }
 
+.clock {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-size: 16px;
+  font-family: "Ubuntu Mono", monospace;
+}
+
 @media screen and (max-width: 600px) {
   .topnav a, .topnav-right {
     float: none;
@@ -136,6 +145,7 @@ footer .icons a:hover img {
   <div class="topnav-right">
     <a href="utilities">Utilities</a>
   </div>
+  <div class="clock" id="clock"></div>
 </div>
 <div class="content">
     <h1>Xandr215's Site</h1>
@@ -176,7 +186,14 @@ function updateCountdown() {
     }
 }
 
+function updateClock() {
+    const clockElement = document.getElementById('clock');
+    const now = new Date();
+    clockElement.textContent = now.toLocaleTimeString();
+}
+
 setInterval(updateCountdown, 1000);
+setInterval(updateClock, 1000);
 </script>
 </body>
 </html>
