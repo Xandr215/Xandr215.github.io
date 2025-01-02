@@ -1,0 +1,25 @@
+CACHE MANIFEST
+# v1.4 : 05-27-2024
+
+CACHE:
+# main
+index.html
+arcade.appcache
+manifest.json
+# games
+# ccp
+ccp/index.html
+ccp/image.png
+# cf
+cf/index.html
+cf/image.png
+# cmg
+cmg/oppositeday.png
+cmg/plactions.png
+cmg/suika.png
+# cs
+cs/index.html
+cs/image.png
+cs/script.js
+cs/assets/0189aa3a322685b5db69c9cc415628f3.wav
+cs/assets/01bf59dee1cd
